@@ -1,10 +1,4 @@
 # Report functions
-file_name = 'game_stat.txt'
-
-with open(file_name, 'r') as reader:
-    result = []
-    for line in reader.readlines():
-        result.append(list(line.split("\t")))
 
 def count_games(file_name):
     return sum(1 for line in open(file_name))
@@ -17,17 +11,46 @@ def decide(file_name, year):
         else:
             return False
 
+def get_list_from_file(file_name):
+    with open(file_name, 'r') as file:
+        list_of_games = []
+        for line in file:
+            list_of_games.append(line.split("\t"))
+    return list_of_games
+
 def get_latest(file_name):
-    current_year = int(result[0][2])
+    YEAR_INDEX = 2
+    list_of_games = get_list_from_file(file_name)
+    current_year = int(list_of_games[0][YEAR_INDEX])
     latest_year = current_year
-    for line in result:
-        current_year = int(result[line][2])
-        if current_year > latest_year:
-            latest_year = current_year
-    return latest_year
+    for Game_info in list_of_games:
+        for _ in Game_info:
+            current_year = int(Game_info[YEAR_INDEX])
+            if current_year > latest_year:
+                # Game_info[-1] = Game_info[-1].strip()
+                latest_year_game = Game_info[0]
+                latest_year = current_year
+    return latest_year_game
 
 
+def count_by_genre(file_name, genre):
+    with open(file_name, 'r') as file:
+        counter = 0
+        for line in file:
+            if genre in line:
+                counter += 1
+    return counter
 
+def sort_abc(file_name):
+    list_of_games = get_list_from_file(file_name)
+    sorted = []
+    for line in list_of_games:
+        sorted.append(line[0])
+    for _ in sorted:
+        for title in range(len(sorted) -1):
+            if sorted[title] > sorted[title +1]:
+                sorted[title], sorted[title +1] = sorted[title +1], sorted[title]
+    print(sorted)
 
-
-print(get_latest('game_stat.txt'))
+#print(get_latest('game_stat.txt'))
+print(sort_abc('game_stat.txt'))
