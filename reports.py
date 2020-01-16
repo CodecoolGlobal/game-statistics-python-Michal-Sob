@@ -1,8 +1,9 @@
 # Report functions
 
 def count_games(file_name):
-    return sum(1 for line in open(file_name))
-    
+    counted_games = sum(1 for line in open(file_name))
+    return counted_games
+
 
 def decide(file_name, year):
     with open(file_name, 'r') as f:
@@ -43,10 +44,17 @@ def count_by_genre(file_name, genre):
 
 def get_line_number_by_title(file_name, title):
     list_of_games = get_list_from_file(file_name)
+    line_number = None
     for row in list_of_games:
         if title in row[0]:
-            return list_of_games.index(row) + 1 #lists starts from 0
+            line_number = list_of_games.index(row) + 1 #lists starts from 0
+            break
+    if line_number == None:
+        raise ValueError
+    else:
+        return line_number
 
+print(get_line_number_by_title('game_stat.txt', 'Counter-Strike'))
 def sort_abc(file_name):
     list_of_games = get_list_from_file(file_name)
     sorted = []
