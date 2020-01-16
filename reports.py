@@ -56,8 +56,4 @@ def sort_abc(file_name):
         for title in range(len(sorted) -1):
             if sorted[title] > sorted[title +1]:
                 sorted[title], sorted[title +1] = sorted[title +1], sorted[title]
-    print(sorted)
-
-#print(get_latest('game_stat.txt'))
-# print(sort_abc('game_stat.txt'))
-# print(get_line_number_by_title('game_stat.txt', 'The Sims 3'))
+    return sorted
