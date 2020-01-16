@@ -41,6 +41,12 @@ def count_by_genre(file_name, genre):
                 counter += 1
     return counter
 
+def get_line_number_by_title(file_name, title):
+    list_of_games = get_list_from_file(file_name)
+    for row in list_of_games:
+        if title in row[0]:
+            return list_of_games.index(row) + 1 #lists starts from 0
+
 def sort_abc(file_name):
     list_of_games = get_list_from_file(file_name)
     sorted = []
@@ -53,4 +59,5 @@ def sort_abc(file_name):
     print(sorted)
 
 #print(get_latest('game_stat.txt'))
-print(sort_abc('game_stat.txt'))
+# print(sort_abc('game_stat.txt'))
+# print(get_line_number_by_title('game_stat.txt', 'The Sims 3'))
