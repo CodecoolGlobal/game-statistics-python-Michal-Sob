@@ -1,6 +1,6 @@
 # Printing functions
 import reports
-
+import os
 
 def count_games_print(file_name):
     games_count = reports.count_games(file_name)
@@ -33,4 +33,42 @@ def get_line_number_by_title_print(file_name):
     line_number = reports.get_line_number_by_title(file_name, title)
     print(f"{title} line number is {line_number}")
 
-get_line_number_by_title_print('game_stat.txt')
+def sort_abc_print(file_name):
+    sorted_file = reports.sort_abc(file_name)
+    print(sorted_file)
+
+# 'game_stat.txt'
+
+
+def main():
+    dict_menu = {'1': count_games_print,
+                '2': decide_print,
+                '3': get_latest_print,
+                '4': count_by_genre,
+                '5': get_line_number_by_title_print,
+                '6': sort_abc_print}
+    file_name = input("Please enter name of the file: ")
+    while True:
+        print(""""
+                Choose option:
+                (1) Count Games
+                (2) Decide
+                (3) Get Latest
+                (4) Count by Genre
+                (5) Get line number by title
+                (6) Sort alphabetically
+                (0) Quit
+                """)
+        option = input("Please enter a number: ")
+        os.system('clear')
+        if option in dict_menu.keys():
+            dict_menu[option](file_name)
+        elif option == '0':
+            break
+        else:
+            raise KeyError("There is no such option.")
+        input("Enter '0' to go back to menu: ")
+
+
+main()
+

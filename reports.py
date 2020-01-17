@@ -4,7 +4,6 @@ def count_games(file_name):
     counted_games = sum(1 for line in open(file_name))
     return counted_games
 
-
 def decide(file_name, year):
     with open(file_name, 'r') as f:
         if str(year) in f.read():
@@ -33,7 +32,6 @@ def get_latest(file_name):
                 latest_year = current_year
     return latest_year_game
 
-
 def count_by_genre(file_name, genre):
     with open(file_name, 'r') as file:
         counter = 0
@@ -54,7 +52,6 @@ def get_line_number_by_title(file_name, title):
     else:
         return line_number
 
-print(get_line_number_by_title('game_stat.txt', 'Counter-Strike'))
 def sort_abc(file_name):
     list_of_games = get_list_from_file(file_name)
     sorted = []
