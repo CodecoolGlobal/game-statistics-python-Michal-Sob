@@ -10,7 +10,7 @@ def export(exported_file):
     genre = sys.argv[3]
     title = sys.argv[4]
     with open(exported_file, 'w') as file:
-        file.writelines(
+        file.write(
 f"""{file_name}
 {str(reports.count_games(file_name))}
 {str(reports.decide(file_name, year))}

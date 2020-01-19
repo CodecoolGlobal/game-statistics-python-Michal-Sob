@@ -61,4 +61,18 @@ def sort_abc(file_name):
         for title in range(len(sorted) -1):
             if sorted[title] > sorted[title +1]:
                 sorted[title], sorted[title +1] = sorted[title +1], sorted[title]
+    
     return sorted
+
+def get_most_played(file_name):
+    file = get_list_from_file(file_name)
+    most_played = file[0][1]
+    for row in file:
+        if float(row[1]) > float(most_played):
+            most_played = row[1]
+    
+    return most_played
+
+
+get_most_played('game_stat.txt')
+
