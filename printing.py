@@ -73,7 +73,7 @@ def main():
                 raise KeyError
         except KeyError:
             print("There is no such option.")
-        input("\nEnter '0' to go back to menu: ")
+        input("\nEnter anything to go back to the menu: ")
 
 
 main()
