@@ -65,14 +65,28 @@ def sort_abc(file_name):
     return sorted
 
 def get_most_played(file_name):
+    GAME_NAME_INDEX = 0
+    GAME_SOLD_COUNT = 1
     file = get_list_from_file(file_name)
-    most_played = file[0][1]
+    most_played = file[0][GAME_SOLD_COUNT]
+    most_played_title = file[0][GAME_NAME_INDEX]
     for row in file:
-        if float(row[1]) > float(most_played):
-            most_played = row[1]
+        if float(row[GAME_SOLD_COUNT]) > float(most_played):
+            most_played = row[GAME_SOLD_COUNT]
+            most_played_title = row[GAME_NAME_INDEX]
     
-    return most_played
+    return most_played_title
 
+def sum_sold(file_name):
+    result = 0
+    list_of_games = get_list_from_file(file_name)
+    for row in list_of_games:
+        result += float(row[1])
+    return result
 
-get_most_played('game_stat.txt')
+def get_selling_avg(file_name):
+    sold_count = sum_sold(file_name)
+    games_count = count_games(file_name)
+    return round(sold_count / games_count, 3)
 
+# print(get_selling_avg('game_stat.txt'))

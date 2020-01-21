@@ -18,6 +18,9 @@ f"""{file_name}
 {str(reports.count_by_genre(file_name, genre))}
 {str(reports.get_line_number_by_title(file_name, title))}
 {str(reports.sort_abc(file_name))[1:-1]}    #[1:-1] is deleting squared brackets
+{str(reports.get_most_played(file_name))}
+{str(reports.sum_sold(file_name))}
+{str(reports.get_selling_avg(file_name))}
 """)
 
 
