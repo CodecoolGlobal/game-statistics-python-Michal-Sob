@@ -48,9 +48,23 @@ def sum_sold_print(file_name):
     sum_sold = reports.sum_sold(file_name)
     print(f"Games total sold count is: {sum_sold}")
 
-def get_selling_avg_print(file_name)
+def get_selling_avg_print(file_name):
     avg_selling_count = reports.get_selling_avg(file_name)
     print(f"Average selling count is: {avg_selling_count}")
+
+def count_longest_title_print(file_name):
+    longest_title = reports.count_longest_title(file_name)
+    print(f"Number of characters in longest title: {longest_title}")
+
+def get_date_avg_print(file_name):
+    avg_date = reports.get_date_avg(file_name)
+    print(f"Average release date is: {avg_date}")
+
+def get_game_print(file_name):
+    title = input('Game title: ')
+    game_info = reports.get_game(file_name, title)
+    print(f"Game info: {game_info}")
+
 
 # 'game_stat.txt'
 
@@ -64,7 +78,10 @@ def main():
                 '6': sort_abc_print,
                 '7': get_most_played_print,
                 '8': sum_sold_print,
-                '9': get_selling_avg_print}
+                '9': get_selling_avg_print,
+                '10': count_longest_title_print,
+                '11': get_date_avg_print,
+                '12': get_game_print}
     file_name = input("Please enter name of the file: ")
     while True:
         try:
@@ -79,6 +96,9 @@ def main():
                 (7) Most Played Game
                 (8) Total Number of sold copies
                 (9) Average selling count
+                (10) Length of a longest title
+                (11) Average game release year
+                (12) Game information
                 (0) Quit
                 """)
             option = input("Please enter a number: ")

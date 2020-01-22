@@ -21,6 +21,9 @@ f"""{file_name}
 {str(reports.get_most_played(file_name))}
 {str(reports.sum_sold(file_name))}
 {str(reports.get_selling_avg(file_name))}
+{str(reports.count_longest_title(file_name))}
+{str(reports.get_date_avg(file_name))}
+{str(reports.get_game(file_name, title))}
 """)
 
 
